@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BruTile" Version="5.0.5" />
+    <PackageReference Include="Mapsui" Version="4.1.1" />
+    <PackageReference Include="Mapsui.WPF" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VectorTileRenderer\VectorTileRenderer.csproj" />
+  </ItemGroup>
+
+</Project>

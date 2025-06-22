@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="protobuf-net" Version="3.2.30" />
+    <PackageReference Include="SkiaSharp" Version="2.88.7" />
+    <PackageReference Include="SkiaSharp.Views.WPF" Version="2.88.7" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
+  </ItemGroup>
+
+</Project>

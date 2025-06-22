@@ -54,6 +54,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compatibility\Net8Compatibility.cs" />
     <Compile Include="GlobalMercator.cs" />
     <Compile Include="ICanvas.cs" />
     <Compile Include="SkiaGL.cs" />
