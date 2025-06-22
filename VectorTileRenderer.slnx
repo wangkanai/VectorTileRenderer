@@ -1,4 +1,9 @@
 ﻿<Solution>
+  <Folder Name="/.solutions/">
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+    <File Path=".gitignore" />
+  </Folder>
   <Folder Name="/Demos/">
     <Project Path="Gmap.Demo.WinForms\Gmap.Demo.WinForms.csproj" Type="Classic C#" />
     <Project Path="Mapsui.Demo.WPF\Mapsui.Demo.WPF.csproj" Type="Classic C#" />
