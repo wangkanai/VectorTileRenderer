@@ -103,8 +103,8 @@ namespace VectorTileRenderer
             public static extern System.IntPtr glGetString(uint value);
         }
 
-
-        public static GRBackendRenderTargetDesc CreateRenderTarget()
+        // Updated to use the new GRBackendRenderTarget class instead of the deprecated GRBackendRenderTargetDesc
+        public static GRBackendRenderTarget CreateRenderTarget()
         {
             int framebuffer, stencil, samples;
             Gles.glGetIntegerv(Gles.GL_FRAMEBUFFER_BINDING, out framebuffer);
@@ -114,16 +114,14 @@ namespace VectorTileRenderer
             int bufferWidth = 0;
             int bufferHeight = 0;
 
-            return new GRBackendRenderTargetDesc
-            {
-                Width = bufferWidth,
-                Height = bufferHeight,
-                Config = GRPixelConfig.Rgba8888,
-                Origin = GRSurfaceOrigin.BottomLeft,
-                SampleCount = samples,
-                StencilBits = stencil,
-                RenderTargetHandle = (IntPtr)framebuffer,
-            };
+            // Using GRBackendRenderTarget constructor instead of GRBackendRenderTargetDesc
+            return new GRBackendRenderTarget(
+                bufferWidth,
+                bufferHeight,
+                samples,
+                stencil,
+                new GRGlFramebufferInfo((uint)framebuffer, SKColorType.Rgba8888.ToGlSizedFormat())
+            );
         }
     }
 }
