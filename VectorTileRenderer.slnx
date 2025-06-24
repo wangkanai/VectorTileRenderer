@@ -1,8 +1,6 @@
 <Solution>
   <Folder Name="/.solutions/">
     <File Path="LICENSE" />
-    <File Path="NET8-MIGRATION-GUIDE.md" />
-    <File Path="README-NET8-MIGRATION.md" />
     <File Path="README.md" />
     <File Path=".gitignore" />
   </Folder>
