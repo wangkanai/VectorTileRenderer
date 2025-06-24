@@ -26,9 +26,6 @@ namespace Mapsui.Demo.WPF
         public static ITileSchema GetTileSchema()
         {
             var schema = new GlobalSphericalMercator(YAxis.TMS);
-            //schema.Resolutions.Clear();
-            //schema.Resolutions["0"] = new Resolution("0", 156543.033900000);
-            //schema.Resolutions["1"] = new Resolution("1", 78271.516950000);
             return schema;
         }
 
@@ -37,10 +34,15 @@ namespace Mapsui.Demo.WPF
             return provider.GetTile(tileInfo);
         }
 
+        public async Task<byte[]> GetTileAsync(TileInfo tileInfo)
+        {
+            // Implement asynchronous version
+            return await Task.FromResult(provider.GetTile(tileInfo));
+        }
+
         public ITileProvider Provider
         {
             get { return provider; }
         }
-
     }
 }
