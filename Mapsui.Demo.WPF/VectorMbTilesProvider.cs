@@ -1,6 +1,7 @@
 ﻿using BruTile;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using VectorTileRenderer;
 
@@ -8,7 +9,6 @@ namespace Mapsui.Demo.WPF
 {
     class VectorMbTilesProvider : ITileProvider
     {
-
         Style style;
         VectorTileRenderer.Sources.MbTilesSource provider;
         string cachePath;
@@ -21,26 +21,26 @@ namespace Mapsui.Demo.WPF
 
             provider = new VectorTileRenderer.Sources.MbTilesSource(path);
             style.SetSourceProvider("openmaptiles", provider);
-
         }
         
         public byte[] GetTile(TileInfo tileInfo)
         {
-            //var newY = (int)Math.Pow(2, zoom) - pos.Y - 1;
-
-            var canvas = new SkiaCanvas();
-            System.Windows.Media.Imaging.BitmapSource bitmapSource;
-
             try
             {
-                bitmapSource = Renderer.RenderCached(cachePath, style, canvas, (int)tileInfo.Index.Col, (int)tileInfo.Index.Row, Convert.ToInt32(tileInfo.Index.Level), 256, 256, 1).Result;
+                var canvas = new SkiaCanvas();
+                var bitmapSource = Renderer.RenderCached(cachePath, style, canvas, (int)tileInfo.Index.Col, (int)tileInfo.Index.Row, Convert.ToInt32(tileInfo.Index.Level), 256, 256, 1).Result;
+                return GetBytesFromBitmapSource(bitmapSource);
             }
             catch
             {
                 return null;
             }
+        }
 
-            return GetBytesFromBitmapSource(bitmapSource);
+        public async Task<byte[]> GetTileAsync(TileInfo tileInfo)
+        {
+            // Implement asynchronous version
+            return await Task.FromResult(GetTile(tileInfo));
         }
 
         static byte[] GetBytesFromBitmapSource(BitmapSource bmp)
@@ -51,18 +51,13 @@ namespace Mapsui.Demo.WPF
             }
 
             var encoder = new PngBitmapEncoder();
-            //encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
-            // byte[] bit = new byte[0];
             using (MemoryStream stream = new MemoryStream())
             {
                 encoder.Frames.Add(BitmapFrame.Create(bmp));
                 encoder.Save(stream);
                 byte[] bit = stream.ToArray();
-                stream.Close();
-
                 return bit;
             }
         }
-
     }
 }
