@@ -1,12 +1,12 @@
 <Solution>
   <Folder Name="/.solutions/">
     <File Path="LICENSE" />
+    <File Path="NET8-MIGRATION-GUIDE.md" />
     <File Path="README-NET8-MIGRATION.md" />
     <File Path="README.md" />
     <File Path=".gitignore" />
   </Folder>
   <Folder Name="/Demos/">
-    <Project Path="Gmap.Demo.WinForms\Gmap.Demo.WinForms.csproj" Id="e3fd4dd8-802d-4dc7-9369-65f7f30bcac6" />
     <Project Path="Mapsui.Demo.WPF\Mapsui.Demo.WPF.csproj" Id="3b10b84b-6803-4f4f-872d-d744e27ffa15" />
     <Project Path="Static.Demo.WPF\Static.Demo.WPF.csproj" Id="88d6b9c0-92cb-41f6-9a87-5ea7354bdd58" />
   </Folder>
